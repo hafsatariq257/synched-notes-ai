@@ -87,7 +87,7 @@ const NewMeeting = () => {
         .select()
         .single();
 
-      if (insertError) throw insertError;
+      if (insertError || !meeting) throw insertError ?? new Error("Failed to save meeting");
 
       setProgress(100);
       toast.success("Meeting analyzed successfully!");
